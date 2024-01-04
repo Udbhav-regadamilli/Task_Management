@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Tasks</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="../css/style.css" rel="stylesheet" />
+  </head>
+  <body>
+    <h1>Hello, <%= data.userName %></h1>
+
+    <form class="taskForm" action="/addTask/<%= data.id %>" method="post">
+      <input
+        type="text"
+        name="taskName"
+        id="taskName"
+        placeholder="Add task..."
+      />
+      <input type="submit" value="Add" id="taskAdd" />
+    </form>
+
+    <div class="tasksList">
+      <% if(data.tasks.length == 0) { %>
+      <div class="NoTask">No Tasks yet</div>
+      <% } else { data.tasks.forEach(item => { %>
+      <form
+        class="taskItemForm"
+        action="/updateTask/<%= data.id %>/<%= item.id %>"
+        method="post"
+      >
+        <div class="taskItem">
+          <% if(!item.data.done) { %> <%= item.data.name %>
+          <button type="submit" name="action" value="markDone">✓</button>
+          <% } else { %>
+          <strike><%= item.data.name %></strike>
+          <button type="submit" name="action" value="delete">X</button>
+          <% } %>
+        </div>
+        <input type="hidden" name="taskId" value="<%= item.id %>" />
+        <hr />
+      </form>
+      <% }); }%>
+    </div>
+  </body>
+</html>

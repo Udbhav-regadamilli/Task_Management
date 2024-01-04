@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task management</title>
+    <link href="../css/style.css" rel="stylesheet" />
+  </head>
+
+  <body>
+    <div class="details">
+      <h3><u>About</u></h3>
+      <br />
+      <h4>
+        Welcome to the Real-Time Todo List Application, a modern and efficient
+        way to manage your tasks seamlessly. This project is designed to provide
+        users with a straightforward and real-time task management experience.
+        Whether you're a busy professional, a student with assignments, or just
+        someone looking to stay organized, this application is tailored for you.
+      </h4>
+      <br />
+    </div>
+    <!--container div -->
+    <div class="container" style="right: -30%">
+      <!-- upper button section to select
+			the login or signup form -->
+      <div class="slider"></div>
+      <div class="btn">
+        <button class="login">Login</button>
+        <button class="signup">Signup</button>
+      </div>
+
+      <!-- Form section that contains the
+			login and the signup form -->
+      <div class="form-section">
+        <!-- login form -->
+        <form class="login-box" method="post" action="/login">
+          <input
+            type="text"
+            name="email"
+            class="email ele"
+            placeholder="email"
+          />
+          <input
+            type="password"
+            name="passwd"
+            class="password ele"
+            placeholder="password"
+          />
+          <input type="submit" class="clkbtn" value="Login" />
+        </form>
+
+        <!-- signup form -->
+        <form class="signup-box" method="post" action="/signup">
+          <input
+            type="text"
+            name="name"
+            class="name ele"
+            placeholder="Enter your full name"
+          />
+          <input
+            type="text"
+            name="email"
+            class="email ele"
+            placeholder="email"
+          />
+          <input
+            type="text"
+            name="phone_no"
+            class="email ele"
+            placeholder="phone number"
+          />
+          <input
+            type="password"
+            name="passwd"
+            class="password ele"
+            placeholder="password"
+          />
+          <input type="submit" class="clkbtn" value="Signup" />
+        </form>
+      </div>
+    </div>
+    <script>
+      let signup = document.querySelector(".signup");
+      let login = document.querySelector(".login");
+      let slider = document.querySelector(".slider");
+      let formSection = document.querySelector(".form-section");
+
+      signup.addEventListener("click", () => {
+        slider.classList.add("moveslider");
+        formSection.classList.add("form-section-move");
+      });
+
+      login.addEventListener("click", () => {
+        slider.classList.remove("moveslider");
+        formSection.classList.remove("form-section-move");
+      });
+    </script>
+  </body>
+</html>
